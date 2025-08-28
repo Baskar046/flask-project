@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+    <script src="{{url_for('static',filename='jquery.min.js')}}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-offset-md-3 col-md-4">
+                <h4 class="text text-primary">FORM INFO</h4>
+                <form id="userForm">
+                    <label>username</label>
+                    <input type="text" id="name" class="form form-control" required>
+                    <label>age</label>
+                    <input type="text" id="age" class="form form-control" required>
+                    <label>city</label>
+                    <input type="text" id="city" class="form form-control" required>
+                    <button class="btn btn-primary mt-2" type="submit">submit</button>
+                </form>
+<!--                <p id="response"></p>-->
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("userForm").addEventListener("submit",async function(e){
+        e.preventDefault();
+
+        const name=document.getElementById("name").value;
+        const age=document.getElementById("age").value;
+        const city=document.getElementById("city").value;
+
+        const data={name:name,age:age,city:city};
+
+        try{
+            const res=await fetch("http://127.0.0.1:5000/users",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(data)
+            });
+
+            if (res.ok){
+                window.location.href="/view";  //redirect user to view page
+            }
+            else {
+                const result = await res.json();
+
+                document.getElementById("response").innerHTML = JSON.stringify(result);
+            }
+        }catch(error){
+            document.getElementById("response").innerHTML="error"+error
+        }
+    });
+</script>
+</html>

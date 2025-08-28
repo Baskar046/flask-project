@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+    <script src="{{url_for('static',filename='jquery.min.js')}}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-offset-md-3 col-md-4 mt-5">
+                <h4>LOGIN PAGE</h4>
+                {{msg}}
+                <form action="" method="POST">
+                    <label>Email ID</label>
+                    <input type="text" name="log_email" class="text form-control mt-1">
+                    <label>Password</label>
+                    <input type="text" name="log_pass" class="text form-control mt-1">
+                    <input type="submit" value="Login" class="btn btn-primary mt-2">
+                    <p>If you don't have please register <a href="\">REGISTER</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

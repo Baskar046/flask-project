@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+    <script src="{{url_for('static',filename='jquery.min.js')}}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-offset-md-3 col-md-3 mt-4">
+                <form class="table table-bordered-form" action =" " method="POST">
+                    <h3>REGISTER PAGE</h3>
+                    <div>
+                    {{msg}}
+                    </div>
+                    <label class="mt-2">UserName</label>
+                    <input type="text" name="reg_name" class="text form-control mt-2" >
+                    <label class="mt-2">Mobile Number</label>
+                    <input type="text" name="reg_mobile" class="text form-control mt-2" >
+                    <label class="mt-2">Email ID</label>
+                    <input type="text" name="reg_email" class="text form-control mt-2" >
+                    <label class="mt-2">Password</label>
+                    <input type="password" name="reg_password" class="text form-control mt-2" >
+                    <div class="mt-2">
+                        <input type="submit" value="register" class="btn btn-primary">
+                    </div>
+                    <p class="text text-black mt-2">if you have account please <a class="text-decoration-underline" href="{{url_for('login')}}">login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
